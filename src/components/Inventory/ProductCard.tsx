@@ -1,4 +1,3 @@
-// components/ProductCard.tsx
 import { useState } from "react";
 import { Product } from "../../types/ProductTypes";
 import { useProducts } from "../../context/ProductContext";
@@ -24,80 +23,134 @@ const ProductCard = ({ product }: { product: Product }) => {
   if (isEditing) {
     return (
       <div className="bg-white rounded-lg shadow-md p-4 space-y-4">
-        <input
-          className="w-full p-2 border rounded"
-          value={editedProduct.name}
-          onChange={(e) =>
-            setEditedProduct({ ...editedProduct, name: e.target.value })
-          }
-          placeholder="Nombre del producto"
-          required
-        />
-        <input
-          type="number"
-          className="w-full p-2 border rounded"
-          value={editedProduct.price}
-          onChange={(e) =>
-            setEditedProduct({
-              ...editedProduct,
-              price: Number(e.target.value),
-            })
-          }
-          placeholder="Precio"
-          required
-        />
-        <input
-          type="number"
-          className="w-full p-2 border rounded"
-          value={editedProduct.stock}
-          onChange={(e) =>
-            setEditedProduct({
-              ...editedProduct,
-              stock: Number(e.target.value),
-            })
-          }
-          placeholder="Stock"
-          required
-        />
-        <input
-          className="w-full p-2 border rounded"
-          value={editedProduct.category}
-          onChange={(e) =>
-            setEditedProduct({ ...editedProduct, category: e.target.value })
-          }
-          placeholder="Categoría"
-          required
-        />
-        <input
-          className="w-full p-2 border rounded"
-          value={editedProduct.brand}
-          onChange={(e) =>
-            setEditedProduct({ ...editedProduct, brand: e.target.value })
-          }
-          placeholder="Marca"
-          required
-        />
-        <input
-          className="w-full p-2 border rounded"
-          value={editedProduct.sizeProduct}
-          onChange={(e) =>
-            setEditedProduct({ ...editedProduct, sizeProduct: e.target.value })
-          }
-          placeholder="Talla"
-          required
-        />
+        {/* Nombre */}
+        <div>
+          <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
+            Nombre del producto:
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={editedProduct.name}
+            onChange={(e) =>
+              setEditedProduct({ ...editedProduct, name: e.target.value })
+            }
+            placeholder="Nombre del producto"
+            required
+          />
+        </div>
+
+        {/* Precio */}
+        <div>
+          <label htmlFor="price" className="block text-gray-700 text-sm font-bold mb-2">
+            Precio:
+          </label>
+          <input
+            type="number"
+            id="price"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={editedProduct.price}
+            onChange={(e) =>
+              setEditedProduct({
+                ...editedProduct,
+                price: Number(e.target.value),
+              })
+            }
+            placeholder="Precio"
+            required
+          />
+        </div>
+
+        {/* Stock */}
+        <div>
+          <label htmlFor="stock" className="block text-gray-700 text-sm font-bold mb-2">
+            Stock:
+          </label>
+          <input
+            type="number"
+            id="stock"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={editedProduct.stock}
+            onChange={(e) =>
+              setEditedProduct({
+                ...editedProduct,
+                stock: Number(e.target.value),
+              })
+            }
+            placeholder="Stock"
+            required
+          />
+        </div>
+
+        {/* Categoría */}
+        <div>
+          <label htmlFor="category" className="block text-gray-700 text-sm font-bold mb-2">
+            Categoría:
+          </label>
+          <input
+            type="text"
+            id="category"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={editedProduct.category}
+            onChange={(e) =>
+              setEditedProduct({ ...editedProduct, category: e.target.value })
+            }
+            placeholder="Categoría"
+            required
+          />
+        </div>
+
+        {/* Marca */}
+        <div>
+          <label htmlFor="brand" className="block text-gray-700 text-sm font-bold mb-2">
+            Marca:
+          </label>
+          <input
+            type="text"
+            id="brand"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={editedProduct.brand}
+            onChange={(e) =>
+              setEditedProduct({ ...editedProduct, brand: e.target.value })
+            }
+            placeholder="Marca"
+            required
+          />
+        </div>
+
+        {/* Talla */}
+        <div>
+          <label htmlFor="size" className="block text-gray-700 text-sm font-bold mb-2">
+            Talla:
+          </label>
+          <input
+            type="text"
+            id="size"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={editedProduct.sizeProduct}
+            onChange={(e) =>
+              setEditedProduct({ ...editedProduct, sizeProduct: e.target.value })
+            }
+            placeholder="Talla"
+            required
+          />
+        </div>
+
         <div className="flex justify-end space-x-2">
           <button
             onClick={() => setIsEditing(false)}
-            className="p-2 text-gray-600 hover:text-gray-800"
+            className="bg-gray-100 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5 inline-block align-middle mr-2" />
+            Cancelar
           </button>
           <button
             onClick={handleSave}
-            className="p-2 text-green-600 hover:text-green-800"
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            <Check className="w-5 h-5" />
+            <Check className="w-5 h-5 inline-block align-middle mr-2" />
+            Guardar
           </button>
         </div>
       </div>
@@ -125,19 +178,21 @@ const ProductCard = ({ product }: { product: Product }) => {
       <div className="flex justify-end space-x-2">
         <button
           onClick={() => setIsEditing(true)}
-          className="p-2 text-blue-600 hover:text-blue-800"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
-          <Pencil className="w-5 h-5" />
+          <Pencil className="w-5 h-5 inline-block align-middle mr-2" />
+          Editar
         </button>
         <button
           onClick={handleDelete}
-          className="p-2 text-red-600 hover:text-red-800"
+          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
-          <Trash2 className="w-5 h-5" />
+          <Trash2 className="w-5 h-5 inline-block align-middle mr-2" />
+          Eliminar
         </button>
       </div>
     </div>
   );
 };
 
-export default ProductCard;
+export default ProductCard
