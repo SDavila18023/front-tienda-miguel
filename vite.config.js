@@ -10,4 +10,8 @@ export default defineConfig({
   preview: {
     port: process.env.PORT || 4173, // Puerto para producción
   },
+  base: '/', // Asegura que las rutas sean relativas
+  build: {
+    outDir: 'dist'
+  }
 });
